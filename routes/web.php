@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('react');
 });
+
+Route::get('/data', function(){
+    return  [
+        'code' => 200,
+        'data' => [
+        ['id' => 123,
+        'name' => 'aids'
+        ],
+        ['id' => 369,
+        'name' => 'buds'
+        ],
+        ['id' => 369,
+        'name' => 'buds'
+        ],]
+    ];
+});
