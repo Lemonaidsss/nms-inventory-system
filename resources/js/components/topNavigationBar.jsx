@@ -4,13 +4,17 @@ import axios from 'axios';
 
 export default function(){
 const [users, setUsers] = useState([]);
+console.log('aasd',users)
 
  const fetchUsers = async () => {
-    const res = await axios.get('data');
-     if(res.ok){
+    console.log('asd')
+    const res = await axios.get('/data');
+
+     if(res.status === 200){
+        console.log('result',res)
         setUsers(res.data.data)
      }else{
-        setUsers (['error']);
+        console.log(res);
      }
    };
 

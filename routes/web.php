@@ -19,16 +19,16 @@ Route::get('/', function () {
 
 Route::get('/data', function(){
     return  [
-        'code' => 200,
+        'code' => 32232,
         'data' => [
         ['id' => 123,
         'name' => 'aids'
         ],
         ['id' => 369,
-        'name' => 'buds'
+        'name' => 'aaaa'
         ],
         ['id' => 369,
-        'name' => 'buds'
+        'name' => 'dsdwe'
         ],]
     ];
 });
