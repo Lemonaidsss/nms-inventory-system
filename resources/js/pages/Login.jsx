@@ -1,13 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
-
-
 
 function Login()
 {
     const [user, setUser]=useState("");
     const [password, setPassword]=useState("");
-    const history = useHistory();
 
     useEffect(() => {
         if (localStorage.getItem('user-info')){

@@ -24,7 +24,7 @@ console.log('aasd',users)
 
     return (
     <Fragment>
-    <Typography variant="h1">users</Typography>
+    <Typography variant="h4">users</Typography>
     <hr/>
     {users.map((aUser, aUserIndex) => {
         return <p key={aUserIndex}>{aUser.id}</p>
