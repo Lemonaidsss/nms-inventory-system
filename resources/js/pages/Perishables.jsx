@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Typography,
     Table,
@@ -14,7 +14,6 @@ import axios from 'axios';
 import NavigationBar from '../components/navigationBar';
 
 
-//check
 export default function () {
     const [items, setEquipment] = useState([]);
     console.log('items succesfuly loaded')
@@ -52,6 +51,10 @@ export default function () {
     });
 
     return (
+        <Grid container spacing={2}>
+            <Grid item xs={2} md={8}>
+                <NavigationBar/>
+            </Grid>
 
             <Table sx={{ minWidth: 100 }} style={{ margin: 80 }}>
                 <TableHead>
@@ -61,7 +64,7 @@ export default function () {
                             <TableCell>Stock Status</TableCell>
                             <TableCell>Sub Category</TableCell>
                             <TableCell>Image</TableCell>
-                            <TableCell>Equipment Name</TableCell>
+                            <TableCell>Item Name</TableCell>
                             <TableCell>Quantity</TableCell>
                             <TableCell>Unit</TableCell>
                         </ThemeProvider>
@@ -81,12 +84,9 @@ export default function () {
                     ))}
                 </TableBody>
             </Table>
+        </Grid>
     );
 }
-
-
-
-
 
 // display
 //    return (

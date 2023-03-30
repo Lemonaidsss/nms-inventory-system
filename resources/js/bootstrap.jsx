@@ -31,9 +31,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     enabledTransports: ['ws', 'wss'],
 // });
 
-import {createRoot} from "react-dom/client"
+import { createRoot } from "react-dom/client"
 import App from './app';
 
-if (document.getElementById('root')){
-    createRoot (document.getElementById('root')).render(<App />)
+if (document.getElementById('root')) {
+    createRoot(document.getElementById('root')).render(<App />)
 }
