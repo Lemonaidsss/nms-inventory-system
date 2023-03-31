@@ -8,7 +8,7 @@ export default function(){
                     <Grid item xs={2} md={8}>
                         <h1>asdadasdad</h1>
                     </Grid>
-                    <h1>asdadasdassssssssssssssssssssss</h1>
+                    <h1>WOW DASHBOARD GRAPE</h1>
                     </Grid>
 
 

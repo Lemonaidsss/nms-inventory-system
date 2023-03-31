@@ -73,6 +73,9 @@ export default function () {
             action: {
                 hover: '#ff0000',
             },
+            icon:  {
+                color: 'red'
+            }
         },
     });
 
@@ -85,20 +88,20 @@ export default function () {
                         <Toolbar variant="dense">
                             <IconButton onClick={handleToggle}><Dehaze color="error" /> </IconButton>
                             <Typography variant="body2" >
-                                BEST SUPERMARKET IN SOMALIA
+                                Welcome User
                             </Typography>
                         </Toolbar>
                     </AppBar>
                 </Box>
 
                 <Drawer anchor="left" open={isOpen} onClose={handleToggle}>
-                    <IconButton onClick={handleToggle}><Dehaze color="error" /> </IconButton>
+                    <IconButton onClick={handleToggle}><Dehaze color="" /> </IconButton>
                     <Box sx={{ p: 1 }}>
                         {sideList}
                         <Divider />
                         <Grid container direction="column" justifyContent="flex-end" sx={{ p: 1 }}>
                             <Typography variant="body2" color="error">
-                                version: sheeeeeeeeeeeeeeesh
+                                ......
                             </Typography>
                         </Grid>
                         <Grid item>

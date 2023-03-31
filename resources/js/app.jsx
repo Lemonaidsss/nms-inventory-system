@@ -13,6 +13,7 @@ export default function () {
     return (
         <Fragment>
             <BrowserRouter>
+
                 <Grid container spacing={2}>
                     <Grid item xs={2} md={8}>
                         <NavigationBar />
@@ -31,6 +32,11 @@ export default function () {
 }
 
 
+
+
+
+
+/// weeeeeeeeeeeeeeew
 
 //export default function () {
 //    return (
