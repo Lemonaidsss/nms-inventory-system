@@ -1,6 +1,15 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Typography } from '@mui/material';
-import axios from 'axios';
+//import axios from 'axios';
+import { create } from 'apisauce';
+
+
+
+const api = create ({
+    baseURL: '/',
+    headers: {'Accept': 'application/json'}
+});
+
 
 export default function () {
     const [users, setUsers] = useState([]);
@@ -8,7 +17,7 @@ export default function () {
 
     const fetchUsers = async () => {
         console.log('asd')
-        const res = await axios.get('/data');
+        const res = await api.get('/data');
 
         if (res.status === 200) {
             console.log('result', res)

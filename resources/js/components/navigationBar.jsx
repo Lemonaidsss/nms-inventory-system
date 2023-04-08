@@ -14,7 +14,7 @@ import {
     AppBar,
     Toolbar
 } from '@mui/material';
-import { Blender, Person, SoupKitchen, Settings, Dehaze } from '@mui/icons-material';
+import { Blender, Person, SoupKitchen, Settings, Dehaze, Dashboard } from '@mui/icons-material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -28,6 +28,12 @@ export default function () {
     const sideList = (
 
         <List>
+            <ListItem button component={Link} to="/">
+                <ListItemIcon>
+                    <Dashboard color="error" />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+            </ListItem>
             <ListItem button component={Link} to="/Perishables">
                 <ListItemIcon>
                     <SoupKitchen color="error" />
@@ -73,11 +79,12 @@ export default function () {
             action: {
                 hover: '#ff0000',
             },
-            icon:  {
+            icon: {
                 color: 'red'
             }
         },
     });
+
 
     return (
 
@@ -88,7 +95,7 @@ export default function () {
                         <Toolbar variant="dense">
                             <IconButton onClick={handleToggle}><Dehaze color="error" /> </IconButton>
                             <Typography variant="body2" >
-                                Welcome User
+                                hi
                             </Typography>
                         </Toolbar>
                     </AppBar>

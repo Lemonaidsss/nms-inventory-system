@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-    Typography,
     Table,
     TableBody,
     TableCell,
@@ -8,17 +7,29 @@ import {
     TableRow,
     createTheme,
     ThemeProvider,
-    Grid
+    Button,
+    TextField,
+    Grid,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+    DialogActions,
+    MenuItem
 } from '@mui/material';
-import axios from 'axios';
+import { create } from 'apisauce'
+import { Delete, EditRounded } from '@mui/icons-material';
+
+const api = create ({
+    baseURL: '/',
+    headers: {'Accept': 'application/json'}
+});
 
 export default function () {
     const [users, setUsers] = useState([]);
-    console.log('aasd', users)
-
     const fetchUsers = async () => {
         console.log('asd')
-        const res = await axios.get('/users');
+        const res = await api.get('/users');
 
         if (res.status === 200) {
             console.log('result', res)
@@ -32,7 +43,8 @@ export default function () {
         fetchUsers();
     }, []);
 
-    const headTheme = createTheme({
+    //TableHead design
+    const tableHead = createTheme({
         components: {
             MuiTableCell: {
                 styleOverrides: {
@@ -47,8 +59,8 @@ export default function () {
             }
         }
     });
-
-    const bodyTheme = createTheme({
+    //TableBody design
+    const tableBody = createTheme({
         components: {
             MuiTableCell: {
                 styleOverrides: {
@@ -60,39 +72,106 @@ export default function () {
             }
         }
     });
-    return (
 
-        <Table sx={{ minWidth: 60 }} style={{ margin: 60 }}>
-            <TableHead>
-                <TableRow>
-                    <ThemeProvider theme={headTheme}>
-                        <TableCell>ID</TableCell>
-                        <TableCell>Username</TableCell>
-                        <TableCell>Role</TableCell>
+    //Edit Dialog
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+    //hardcoded roles list
+    const roles = [
+        { value: 'Super Admin', label: 'Super Admin' },
+        { value: 'Admin', label: 'Admin' },
+        { value: 'User', label: 'User' }
+    ];
+
+    const [selectedOption, setSelectOption] = useState('');
+    const handleOptionChange = (event) => {
+        setSelectOption(event.target.value);
+    };
+
+    return (
+        <>
+            <Table sx={{ minWidth: 100 }} style={{ margin: 80 }} >
+                <TableHead>
+                    <TableRow>
+                        <ThemeProvider theme={tableHead}>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Username</TableCell>
+                            <TableCell>Role</TableCell>
+                            <TableCell>Actions</TableCell>
+                        </ThemeProvider>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    <ThemeProvider theme={tableBody}>
+                        {users.map((row) => (
+                            <TableRow key={row.code}>
+                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.name}</TableCell>
+                                <TableCell>{row.role}</TableCell>
+                                <TableCell>
+                                    <Button
+                                        onClick={handleClickOpen}>
+                                        <EditRounded button color="warning" />
+                                    </Button>
+                                    <Button>
+                                        <Delete color="error" />
+                                    </Button>
+                                </TableCell>
+                            </TableRow>
+                        ))}
                     </ThemeProvider>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                <ThemeProvider theme={bodyTheme}>
-                    {users.map((row) => (
-                        <TableRow key={row.code}>
-                            <TableCell>{row.id}</TableCell>
-                            <TableCell>{row.name}</TableCell>
-                            <TableCell>{row.role}</TableCell>
-                        </TableRow>
-                    ))}
-                </ThemeProvider>
-            </TableBody>
-        </Table>
+                </TableBody>
+            </Table>
+            <>
+                <Dialog open={open} onClose={handleClose}>
+                    <DialogTitle>Edit User Credentials</DialogTitle>
+                    <DialogContent>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Username"
+                            type="name"
+                            fullWidth
+                            variant="standard"
+                        />
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="password"
+                            label="Password"
+                            type="password"
+                            fullWidth
+                            variant="standard"
+                        />
+                        <TextField
+                            select
+                            label="Select a role"
+                            id="roles"
+                            value={selectedOption}
+                            onChange={handleOptionChange}
+                            variant="standard"
+                            fullWidth
+                         >
+                            { roles.map((roles) => (
+                                <MenuItem key={roles.value} value={roles.value}>
+                                    {roles.label}
+                                </MenuItem>
+                            ))}
+                         </TextField>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Save Changes</Button>
+                        <Button onClick={handleClose}>Cancel</Button>
+                    </DialogActions>
+                </Dialog>
+            </>
+        </>
     );
 }
-
-//    return (
-//        <Fragment>
-//            <Typography variant="h4">users</Typography>
-//            <hr />
-//            {users.map((aUser, aUserIndex) => {
-//                return <p key={aUserIndex}>{aUser.id}</p>
-//            })}
-//        </Fragment>)
-//}
+~`~`

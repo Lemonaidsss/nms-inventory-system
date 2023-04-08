@@ -35,20 +35,3 @@ export default function () {
 
 
 
-
-/// weeeeeeeeeeeeeeew
-
-//export default function () {
-//    return (
-//        <Fragment>
-//            <BrowserRouter>
-//                <Routes>
-//                    <Route path="/Perishables" element={<Perishables />} />
-//                    <Route path="/Equipment" element={<Equipment />} />
-//                    <Route path="/InventorySettings" element={<InventorySettings />} />
-//                    <Route path="/Users" element={<Users />} />
-//                </Routes>
-//            </BrowserRouter>
-//        </Fragment>
-//    )
-//}

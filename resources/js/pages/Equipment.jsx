@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-    Typography,
     Table,
     TableBody,
     TableCell,
@@ -8,19 +7,20 @@ import {
     TableRow,
     createTheme,
     ThemeProvider,
-    Grid
+    Button
 } from '@mui/material';
+import { Delete, EditRounded } from '@mui/icons-material';
 import axios from 'axios';
-import NavigationBar from '../components/navigationBar';
 
 
-//check
 export default function () {
+    // fetch dummy data using axios from backend
     const [items, setEquipment] = useState([]);
-    console.log('items succesfuly loaded')
+    // check if item loaded succesfuly
+    console.log('equipment succesfuly loaded')
 
     const fetchEquipment = async () => {
-        console.log('items succesfuly loaded')
+        console.log('equipment succesfuly loaded')
         const res = await axios.get('/equipment');
 
         if (res.status === 200) {
@@ -35,7 +35,7 @@ export default function () {
         fetchEquipment();
     }, []);
 
-    const headTheme = createTheme({
+    const tableHead = createTheme({
         components: {
             MuiTableCell: {
                 styleOverrides: {
@@ -50,7 +50,7 @@ export default function () {
             }
         }
     });
-    const bodyTheme = createTheme({
+    const tableBody = createTheme({
         components: {
             MuiTableCell: {
                 styleOverrides: {
@@ -64,55 +64,44 @@ export default function () {
     });
 
     return (
-
         <Table sx={{ minWidth: 100 }} style={{ margin: 80 }}>
             <TableHead>
                 <TableRow>
-                    <ThemeProvider theme={headTheme}>
+                    <ThemeProvider theme={tableHead}>
                         <TableCell>SKU</TableCell>
                         <TableCell>Image</TableCell>
                         <TableCell>Sub Category</TableCell>
                         <TableCell>Equipment Name</TableCell>
                         <TableCell>Quantity</TableCell>
                         <TableCell>Unit</TableCell>
+                        <TableCell>Actions</TableCell>
                     </ThemeProvider>
                 </TableRow>
             </TableHead>
             <TableBody>
-                <ThemeProvider theme={bodyTheme}>
+                <ThemeProvider theme={tableBody}>
                     {items.map((row) => (
                         <TableRow key={row.category}>
-                            <TableCell>{row.sku}</TableCell>
-                            <TableCell>{row.img}</TableCell>
-                            <TableCell>{row.subcat}</TableCell>
+                            <TableCell>{row.stock_keeping_unit}</TableCell>
+                            <TableCell>{row.image}</TableCell>
+                            <TableCell>{row.sub_category}</TableCell>
                             <TableCell>{row.item_name}</TableCell>
-                            <TableCell>{row.qty}</TableCell>
+                            <TableCell>{row.quantity}</TableCell>
                             <TableCell>{row.unit}</TableCell>
-
+                            <TableCell>
+                                <Button>
+                                    <EditRounded button color="warning" />
+                                </Button>
+                                <Button>
+                                    <Delete color="error" />
+                                </Button>
+                            </TableCell>
                         </TableRow>
-
                     ))}
                 </ThemeProvider>
             </TableBody>
         </Table>
     );
 }
-
-
-
-
-
-// display
-//    return (
-//    <div>
-//    <Typography variant="h6">items</Typography>
-//    <hr/>
-//    {items.map((aItems, aItemsIndex) => {
-//        return <p key={aItemsIndex}>{aItems.subcat}</p>
-//    })}
-//    </div>
-//    )
-
-
 
 

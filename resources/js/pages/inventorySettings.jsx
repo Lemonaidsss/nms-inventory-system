@@ -1,4 +1,3 @@
-import NavigationBar from "../components/navigationBar";
 
 export default function () {
 

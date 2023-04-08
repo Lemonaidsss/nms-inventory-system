@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-    Typography,
     Table,
     TableBody,
     TableCell,
@@ -8,14 +7,15 @@ import {
     TableRow,
     createTheme,
     ThemeProvider,
-    Grid
+    Button
 } from '@mui/material';
+import { Delete, EditRounded } from '@mui/icons-material';
 import axios from 'axios';
-import NavigationBar from '../components/navigationBar';
 
 
 export default function () {
     const [items, setEquipment] = useState([]);
+    // check if item loaded succesfuly
     console.log('items succesfuly loaded')
 
     const fetchEquipment = async () => {
@@ -74,6 +74,7 @@ export default function () {
                         <TableCell>Item Name</TableCell>
                         <TableCell>Quantity</TableCell>
                         <TableCell>Unit</TableCell>
+                        <TableCell>Actions</TableCell>
                     </ThemeProvider>
                 </TableRow>
             </TableHead>
@@ -81,13 +82,21 @@ export default function () {
                 <ThemeProvider theme={bodyTheme}>
                     {items.map((row) => (
                         <TableRow key={row.category}>
-                            <TableCell>{row.sku}</TableCell>
+                            <TableCell>{row.stock_keeping_unit}</TableCell>
                             <TableCell>{row.stock_status}</TableCell>
-                            <TableCell>{row.img}</TableCell>
-                            <TableCell>{row.subcat}</TableCell>
+                            <TableCell>{row.image}</TableCell>
+                            <TableCell>{row.sub_category}</TableCell>
                             <TableCell>{row.item_name}</TableCell>
-                            <TableCell>{row.qty}</TableCell>
+                            <TableCell>{row.quantity}</TableCell>
                             <TableCell>{row.unit}</TableCell>
+                            <TableCell>
+                                <Button >
+                                    <EditRounded button color="warning" />
+                                </Button>
+                                <Button>
+                                    <Delete color="error" />
+                                </Button>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </ThemeProvider>
@@ -95,18 +104,3 @@ export default function () {
         </Table>
     );
 }
-
-// display
-//    return (
-//    <div>
-//    <Typography variant="h6">items</Typography>
-//    <hr/>
-//    {items.map((aItems, aItemsIndex) => {
-//        return <p key={aItemsIndex}>{aItems.subcat}</p>
-//    })}
-//    </div>
-//    )
-
-
-
-

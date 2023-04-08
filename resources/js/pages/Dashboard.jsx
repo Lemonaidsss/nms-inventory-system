@@ -1,18 +1,19 @@
 import { Grid } from "@mui/material";
 
 
-export default function(){
-    return(
+
+export default function () {
+    return (
+
         <Grid>
-            <Grid container spacing={2}>
-                    <Grid item xs={2} md={8}>
-                        <h1>asdadasdad</h1>
-                    </Grid>
+            <Grid >
+                <Grid item xs={12} md={12}>
+                    <h1>asdadasdad</h1>
                     <h1>WOW DASHBOARD GRAPE</h1>
-                    </Grid>
-
-
+                </Grid >
+            </Grid>
         </Grid>
 
-    )
+    );
+
 }
