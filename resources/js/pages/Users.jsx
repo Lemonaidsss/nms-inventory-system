@@ -9,20 +9,19 @@ import {
     ThemeProvider,
     Button,
     TextField,
-    Grid,
     Dialog,
     DialogTitle,
     DialogContent,
-    DialogContentText,
     DialogActions,
-    MenuItem
+    MenuItem,
 } from '@mui/material';
 import { create } from 'apisauce'
 import { Delete, EditRounded } from '@mui/icons-material';
+import { DataGrid } from '@mui/x-data-grid';
 
-const api = create ({
+const api = create({
     baseURL: '/',
-    headers: {'Accept': 'application/json'}
+    headers: { 'Accept': 'application/json' }
 });
 
 export default function () {
@@ -75,17 +74,21 @@ export default function () {
 
     //Edit Dialog
     const [open, setOpen] = React.useState(false);
+
     const handleClickOpen = () => {
         setOpen(true);
     };
+
     const handleClose = () => {
         setOpen(false);
     };
+
+
     //hardcoded roles list
     const roles = [
-        { value: 'Super Admin', label: 'Super Admin' },
-        { value: 'Admin', label: 'Admin' },
-        { value: 'User', label: 'User' }
+        { id: 1, value: 'Kitchen Manager', label: 'Kitchen Manager' },
+        { id: 2, value: 'Kitchen Staff', label: 'Kitchen Staff' },
+        { id: 3, value: 'Purchasing Officer', label: 'Purchasing Officer' }
     ];
 
     const [selectedOption, setSelectOption] = useState('');
@@ -109,7 +112,7 @@ export default function () {
                 <TableBody>
                     <ThemeProvider theme={tableBody}>
                         {users.map((row) => (
-                            <TableRow key={row.code}>
+                            <TableRow key={row.id}>
                                 <TableCell>{row.id}</TableCell>
                                 <TableCell>{row.name}</TableCell>
                                 <TableCell>{row.role}</TableCell>
@@ -155,15 +158,15 @@ export default function () {
                             id="roles"
                             value={selectedOption}
                             onChange={handleOptionChange}
-                            variant="standard"
                             fullWidth
-                         >
-                            { roles.map((roles) => (
-                                <MenuItem key={roles.value} value={roles.value}>
+                            variant="standard"
+                        >
+                            {roles.map((roles) => (
+                                <MenuItem key={roles.id} value={roles.value}>
                                     {roles.label}
                                 </MenuItem>
                             ))}
-                         </TextField>
+                        </TextField>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Save Changes</Button>
@@ -174,4 +177,3 @@ export default function () {
         </>
     );
 }
-~`~`

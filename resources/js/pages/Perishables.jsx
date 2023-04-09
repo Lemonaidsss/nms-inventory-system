@@ -81,7 +81,7 @@ export default function () {
             <TableBody>
                 <ThemeProvider theme={bodyTheme}>
                     {items.map((row) => (
-                        <TableRow key={row.category}>
+                        <TableRow key={row.id}>
                             <TableCell>{row.stock_keeping_unit}</TableCell>
                             <TableCell>{row.stock_status}</TableCell>
                             <TableCell>{row.image}</TableCell>

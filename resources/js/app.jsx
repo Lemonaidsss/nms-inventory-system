@@ -7,21 +7,25 @@ import Equipment from './pages/Equipment';
 import InventorySettings from './pages/inventorySettings';
 import Users from './pages/Users';
 import Dashboard from './pages/Dashboard';
+import PurchaseRequests from './pages/purchaseRequests';
+import PurchaseOrders from './pages/purchaseOrders';
 
 
 export default function () {
     return (
         <Fragment>
             <BrowserRouter>
-
+            
                 <Grid container spacing={2}>
                     <Grid item xs={2} md={8}>
                         <NavigationBar />
                     </Grid>
                     <Routes>
-                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/*" element={<Dashboard />} />
                         <Route path="/Equipment" element={<Equipment />} />
                         <Route path="/Perishables" element={<Perishables />} />
+                        <Route path="/PurchaseRequests" element={<PurchaseRequests />} />
+                        <Route path="/PurchaseOrders" element={<PurchaseOrders />} />
                         <Route path="/InventorySettings" element={<InventorySettings />} />
                         <Route path="/Users" element={<Users />} />
                     </Routes>

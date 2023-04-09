@@ -14,7 +14,15 @@ import {
     AppBar,
     Toolbar
 } from '@mui/material';
-import { Blender, Person, SoupKitchen, Settings, Dehaze, Dashboard } from '@mui/icons-material';
+import { Blender, 
+    Person, 
+    SoupKitchen, 
+    Settings, 
+    Dehaze, 
+    Dashboard, 
+    ShoppingCartCheckout, 
+    AddShoppingCart 
+} from '@mui/icons-material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -45,6 +53,18 @@ export default function () {
                     <Blender color="error" />
                 </ListItemIcon>
                 <ListItemText primary="Equipment" />
+            </ListItem>
+            <ListItem button component={Link} to="/PurchaseRequests">
+                <ListItemIcon>
+                    <AddShoppingCart color="error" />
+                </ListItemIcon>
+                <ListItemText primary="Purchase Requests" />
+            </ListItem>
+            <ListItem button component={Link} to="/PurchaseOrders">
+                <ListItemIcon>
+                    <ShoppingCartCheckout color="error" />
+                </ListItemIcon>
+                <ListItemText primary="Purchase Orders" />
             </ListItem>
             <ListItem button component={Link} to="/InventorySettings">
                 <ListItemIcon>

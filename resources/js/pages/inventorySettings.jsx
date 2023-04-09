@@ -1,9 +1,19 @@
+import { Grid } from "@mui/material";
+
+
 
 export default function () {
-
     return (
-        <div>
-            <h1>Inventory Settings</h1>
-        </div>
-    )
+
+        <Grid>
+            <Grid >
+                <Grid item xs={12} md={12}>
+                    <h1>AAAAAAAAAAAAAAAAAAA</h1>
+                    <h1>INVENTORY SETTINGS PAGE XD</h1>
+                </Grid >
+            </Grid>
+        </Grid>
+
+    );
+
 }
