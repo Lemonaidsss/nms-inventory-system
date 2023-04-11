@@ -83,9 +83,9 @@ export default function () {
     };
     //hardcoded roles list
     const roles = [
-        { value: 'Super Admin', label: 'Super Admin' },
-        { value: 'Admin', label: 'Admin' },
-        { value: 'User', label: 'User' }
+        { value: 'Kitchen Manager', label: 'Kitchen Manager' },
+        { value: 'Purchase Officer', label: 'Purchase Officer' },
+        { value: 'Kitchen Staff', label: 'Kitchen Staff' }
     ];
 
     const [selectedOption, setSelectOption] = useState('');
